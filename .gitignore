@@ -1,0 +1,50 @@
+# Java / Spring Boot Build
+backend/target/
+backend/bin/
+backend/.settings/
+backend/.classpath
+backend/.project
+backend/.factorypath
+backend/.springBeans
+backend/*.versionsBackup
+
+# Node / React Build
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.eslintcache
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Logs
+*.log
+backend/logs/
+frontend/logs/
+
+# Editor / IDE Configurations (VS Code, IntelliJ, Eclipse)
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# OS Specific Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
