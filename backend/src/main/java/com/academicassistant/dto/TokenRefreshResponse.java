@@ -1,0 +1,16 @@
+package com.academicassistant.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class TokenRefreshResponse {
+    private String token;
+    private String type = "Bearer";
+    private String refreshToken;
+}

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-slate-50 text-slate-800 transition-colors duration-300 antialiased selection:bg-brand-100 selection:text-brand-900;
+  }
+  body.dark {
+    @apply bg-darkbg text-slate-200 selection:bg-brand-900 selection:text-brand-100;
+  }
+}
+
+/* Custom Scrollbar Styles for Glassmorphic and Modern Themes */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-darkbg-border rounded-full hover:bg-slate-700 transition-colors;
+}
+
+/* Smooth glassmorphic styling utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(21, 29, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 47, 67, 0.4);
+}

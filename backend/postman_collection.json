@@ -1,0 +1,352 @@
+{
+	"info": {
+		"_postman_id": "4b6dfd54-8e10-449e-b9b2-2977b3be28fd",
+		"name": "AI Academic Assistant Auth API",
+		"description": "Postman API test suite collection for authentication endpoints of the AI Academic Assistant. Covers Sign-up, Email Verification, Login, JWT Token Refreshes, Password Recovery, and Logout transactions.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Signup (Student)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-signup-student",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"student@test.com\",\n    \"password\": \"password123\",\n    \"name\": \"John Doe\",\n    \"role\": \"STUDENT\",\n    \"college\": \"Stanford University\",\n    \"branch\": \"Computer Science\",\n    \"semester\": \"Semester 4\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Signup (Teacher)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-signup-teacher",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"professor@test.com\",\n    \"password\": \"password123\",\n    \"name\": \"Jane Smith\",\n    \"role\": \"TEACHER\",\n    \"department\": \"Computer Science & Engineering\",\n    \"designation\": \"Associate Professor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Verify Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-verify-email",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"PASTE_VERIFICATION_TOKEN_FROM_CONSOLE_LOGS_HERE\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/verify-email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"verify-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"if (jsonData.success) {",
+							"    pm.environment.set(\"accessToken\", jsonData.data.token);",
+							"    pm.environment.set(\"refreshToken\", jsonData.data.refreshToken);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"student@test.com\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Refresh Token Rotation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"if (jsonData.success) {",
+							"    pm.environment.set(\"accessToken\", jsonData.data.token);",
+							"    pm.environment.set(\"refreshToken\", jsonData.data.refreshToken);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-refresh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Forgot Password Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-forgot-password",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"student@test.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/forgot-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Reset Password Confirmation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-reset-password",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"PASTE_RESET_TOKEN_FROM_CONSOLE_LOGS_HERE\",\n    \"newPassword\": \"newSecurePassword123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/reset-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "pm-test-logout",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
