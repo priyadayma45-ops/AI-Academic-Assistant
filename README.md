@@ -142,10 +142,10 @@ AI Academic Assistant/
 
 - [x] **Phase 1: Project Setup + Authentication + Database**
   - Project scaffolding, response mapping, logging filters, database layouts, JWT rotation, and shared component system.
-- [ ] **Phase 2: Dashboard + File Upload**
-  - Drag-and-drop uploads, progress feedback, local filesystem storage, OCR text parsing, and statistics dashboards.
-- [ ] **Phase 3: AI Grammar, Rewrite, Summary**
-  - Gemini AI core checker, coaching explanations, Viva questions, revision generators.
+- [x] **Phase 2: Dashboard + File Upload**
+  - Drag-and-drop uploads, progress feedback, local filesystem storage, asynchronous mock analysis, and statistics dashboards.
+- [x] **Phase 3: AI Grammar, Rewrite, Summary**
+  - Gemini AI core checker, modular abstract AI providers, coaching feedback, text rewriting styles, summaries, and transaction audit trails.
 - [ ] **Phase 4: Formatting Checker + Assignment Score**
   - Font face, margin, alignment, page number compliance checks.
 - [ ] **Phase 5: College Template Validator**

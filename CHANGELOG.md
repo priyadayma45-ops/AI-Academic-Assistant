@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file. The format 
 
 ---
 
+## [0.3.0] - 2026-07-10
+### Added
+- **AI Writing Assistant Panels**: Created modular views for spelling checks, structural rewriting, and summaries.
+- **Structured Coach Suggestions**: Returns character offsets and explanations to act as an educational coach.
+- **Decoupled AI Provider Abstraction**: Created `AiProvider` interface with profile-specific beans (`GeminiAiProviderImpl` and `MockAiProviderImpl`).
+- **AI Transaction Audit Logging**: Logged all requests to `activity_logs` tracing length and actions.
+- **Overload Type Fixes**: Resolved Java compiler bounds issues on `ApiResponse` generic static builders.
+- **REST Endpoints**: Created `/api/v1/ai/grammar`, `/api/v1/ai/rewrite`, and `/api/v1/ai/summarize` with input length validations.
+
+---
+
 ## [0.2.0] - 2026-07-10
 ### Added
 - **Asynchronous Document Grading**: Integrated Spring `@Async` task executor to analyze, grade (between 68% and 98%), and audit uploaded assignments.

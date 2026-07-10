@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, HelpCircle, ArrowLeft } from 'lucide-react';
+import { HelpCircle, ArrowLeft } from 'lucide-react';
 import Button from '../components/Button';
 
 export const NotFound = () => {

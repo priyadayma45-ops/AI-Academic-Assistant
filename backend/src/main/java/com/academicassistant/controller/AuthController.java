@@ -82,8 +82,7 @@ public class AuthController {
         authService.verifyEmail(verifyRequest.getToken(), getClientIp(request));
         
         ApiResponse<Object> response = ApiResponse.success(
-                "Email verified successfully. You can now login.",
-                getRequestId()
+                "Email verified successfully. You can now login."
         );
         return ResponseEntity.ok(response);
     }
@@ -94,8 +93,7 @@ public class AuthController {
         authService.forgotPassword(forgotRequest, getClientIp(request));
         
         ApiResponse<Object> response = ApiResponse.success(
-                "If the email is registered, a password reset link has been sent.",
-                getRequestId()
+                "If the email is registered, a password reset link has been sent."
         );
         return ResponseEntity.ok(response);
     }
@@ -106,8 +104,7 @@ public class AuthController {
         authService.resetPassword(resetRequest, getClientIp(request));
         
         ApiResponse<Object> response = ApiResponse.success(
-                "Password reset successfully. You can now login with your new password.",
-                getRequestId()
+                "Password reset successfully. You can now login with your new password."
         );
         return ResponseEntity.ok(response);
     }
@@ -134,7 +131,7 @@ public class AuthController {
             authService.logoutUser(userPrincipal.getId(), getClientIp(request));
             SecurityContextHolder.clearContext();
             
-            ApiResponse<Object> response = ApiResponse.success("Logout successful", getRequestId());
+            ApiResponse<Object> response = ApiResponse.success("Logout successful");
             return ResponseEntity.ok(response);
         }
         

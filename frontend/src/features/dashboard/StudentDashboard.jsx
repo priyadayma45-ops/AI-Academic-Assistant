@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../components/Toast';
 import DashboardLayout from '../../layouts/DashboardLayout';
 import Card, { CardBody } from '../../components/Card';

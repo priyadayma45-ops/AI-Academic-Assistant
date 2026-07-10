@@ -7,6 +7,7 @@ export const ROUTES = {
   STUDENT_DASHBOARD: '/student/dashboard',
   TEACHER_DASHBOARD: '/teacher/dashboard',
   ADMIN_DASHBOARD: '/admin/dashboard',
+  AI_ASSISTANT: '/ai-assistant',
   NOT_FOUND: '/404',
   FORBIDDEN: '/403',
 };

@@ -13,6 +13,7 @@ import VerifyEmail from './features/auth/VerifyEmail';
 import StudentDashboard from './features/dashboard/StudentDashboard';
 import TeacherDashboard from './features/dashboard/TeacherDashboard';
 import AdminDashboard from './features/dashboard/AdminDashboard';
+import AiAssistant from './features/ai-assistant/AiAssistant';
 import NotFound from './pages/NotFound';
 import Forbidden from './pages/Forbidden';
 import { ROUTES } from './constants/routes';
@@ -79,6 +80,16 @@ function App() {
                   element = {
                     <ProtectedRoute allowedRoles={['ROLE_ADMIN']}>
                       <AdminDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Protected AI Coach Routes */}
+                <Route
+                  path={ROUTES.AI_ASSISTANT}
+                  element = {
+                    <ProtectedRoute allowedRoles={['ROLE_STUDENT', 'ROLE_TEACHER']}>
+                      <AiAssistant />
                     </ProtectedRoute>
                   }
                 />

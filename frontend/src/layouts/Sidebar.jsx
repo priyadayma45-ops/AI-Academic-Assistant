@@ -8,7 +8,6 @@ import {
   Sparkles,
   BookOpen,
   User,
-  Settings,
   FolderLock,
   LogOut,
   X
@@ -30,6 +29,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
       return [
         { path: '/teacher/dashboard', name: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
         { path: '/teacher/templates', name: 'Templates Manager', icon: <FileUp className="w-5 h-5" /> },
+        { path: '/ai-assistant', name: 'AI Coach Assistant', icon: <Sparkles className="w-5 h-5" /> },
         { path: '/teacher/profile', name: 'Profile Settings', icon: <User className="w-5 h-5" /> },
       ];
     } else {
@@ -37,6 +37,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
         { path: '/student/dashboard', name: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
         { path: '/student/upload', name: 'Upload Document', icon: <FileUp className="w-5 h-5" /> },
         { path: '/student/history', name: 'Assignment History', icon: <History className="w-5 h-5" /> },
+        { path: '/ai-assistant', name: 'AI Coach Assistant', icon: <Sparkles className="w-5 h-5" /> },
         { path: '/student/citation', name: 'Citation Tool', icon: <BookOpen className="w-5 h-5" /> },
         { path: '/student/chat', name: 'AI Chat Coach', icon: <Sparkles className="w-5 h-5" /> },
         { path: '/student/profile', name: 'My Profile', icon: <User className="w-5 h-5" /> },
