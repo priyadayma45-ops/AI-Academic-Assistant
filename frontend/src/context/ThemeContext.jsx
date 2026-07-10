@@ -1,3 +1,4 @@
+/* eslint-disable react/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
@@ -8,11 +9,12 @@ export const ThemeProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    const body = window.document.body;
-    
-    const applyTheme = (themeName) => {
-      if (themeName === 'dark' || (themeName === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    const applyTheme = (t) => {
+      const root = window.document.documentElement;
+      const body = window.document.body;
+      const isDark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      if (isDark) {
         root.classList.add('dark');
         body.classList.add('dark');
       } else {
@@ -26,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
 
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const listener = (e) => {
+      const listener = () => {
         applyTheme('system');
       };
       mediaQuery.addEventListener('change', listener);

@@ -1,3 +1,4 @@
+/* eslint-disable react/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import authService from '../services/authService';
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       try {
         setUser(JSON.parse(storedUser));
         setIsAuthenticated(true);
-      } catch (e) {
+      } catch {
         clearAuthData();
       }
     }
@@ -77,7 +78,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       await authService.logout();
-    } catch (e) {
+    } catch {
       console.warn("Logout request failed on server, clearing client-side session anyway.");
     } finally {
       clearAuthData();
