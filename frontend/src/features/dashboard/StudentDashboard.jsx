@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../components/Toast';
 import DashboardLayout from '../../layouts/DashboardLayout';
@@ -38,7 +38,6 @@ ChartJS.register(
 );
 
 export const StudentDashboard = () => {
-  const { user } = useAuth();
   const { addToast } = useToast();
   
   // Dashboard states
@@ -47,11 +46,10 @@ export const StudentDashboard = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [dragActive, setDragActive] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
   const fileInputRef = useRef(null);
 
   // Load stats
-  const fetchStats = async (silent = false) => {
+  const fetchStats = useCallback(async (silent = false) => {
     if (!silent) setLoadingStats(true);
     try {
       const res = await documentService.getDashboardStats();
@@ -64,12 +62,12 @@ export const StudentDashboard = () => {
     } finally {
       if (!silent) setLoadingStats(false);
     }
-  };
+  }, [addToast]);
 
   // Fetch stats on mount
   useEffect(() => {
     fetchStats();
-  }, []);
+  }, [fetchStats]);
 
   // Auto-polling for active background grading
   useEffect(() => {
@@ -87,7 +85,7 @@ export const StudentDashboard = () => {
 
       return () => clearInterval(interval);
     }
-  }, [stats]);
+  }, [stats, fetchStats]);
 
   const logPollingStatus = () => {
     console.log("Polling background grading status...");
