@@ -1,158 +1,186 @@
-# AI Academic Assistant
+# 🎓 AI Academic Assistant
 
-A production-ready, resume-worthy Full-Stack Web Application built with clean architecture, SOLID principles, and enterprise-grade security. This tool automates grammar checking, formatting compliance reviews against templates, document score predictions, and exports reports.
+[![Java](https://img.shields.io/badge/Java-21-orange.svg?style=for-the-badge&logo=openjdk)](https://openjdk.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-brightgreen.svg?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-19-blue.svg?style=for-the-badge&logo=react)](https://react.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
----
-
-## Technical Stack
-
-- **Backend**: Java 21, Spring Boot 3.3.4, Spring Security, JWT Auth, Spring Data JPA, Hibernate, Maven Wrapper.
-- **Frontend**: Vite + React 19, Tailwind CSS 3.4.1, React Router, Axios, React Hook Form, Framer Motion, TanStack React Query.
-- **Database**: MySQL.
-- **AI Integration**: Gemini 1.5 Flash (Modular AI Provider).
+An enterprise-grade, full-stack AI-powered coaching companion designed for students, teachers, and academic administrators. Built with a clean, decoupled architecture, SOLID design principles, secure JWT session rotation, and a modular AI interface layer.
 
 ---
 
-## Architectural & Security Blueprint (Phase 1)
+## 🚀 Key Features
 
-1. **API Response Standardization**:
-   All endpoints return a uniform envelope payload:
-   ```json
-   {
-     "success": true,
-     "message": "Operation successful",
-     "data": { ... },
-     "requestId": "uuid-tracing-id",
-     "timestamp": "2026-07-10T16:13:53Z"
-   }
-   ```
-2. **Request Tracing ID**:
-   Every HTTP call gets assigned a unique `X-Request-ID` header. It is logged using SLF4J Mapped Diagnostic Context (MDC) for clear trace indexing in multi-threaded runtime logs.
-3. **JWT Token Rotation & Hashing**:
-   Stateful JWT Access tokens expire in 1 hour. Refresh tokens are single-use (fully rotated and re-issued on validation) and expire in 7 days. Passwords are saved encrypted with `BCrypt`.
-4. **Shared Component Library**:
-   We built a reusable design system in `frontend/src/components/` incorporating ARIA labels, responsive views, and keyboard highlights:
-   - `Button`: Accessibility-friendly variants (primary, secondary, danger, outline) and loading locks.
-   - `Card`: Grid cell containers with glassmorphic backdrop filters.
-   - `Input`: Forward-referenced inputs integrating with React Hook Form.
-   - `Modal`: spring-animated overlays capturing Esc key events.
-   - `Table`: Responsive tabular list mappings.
-   - `Loader`: Page-blocking glass overlay spinners.
-   - `ErrorBoundary`: Crash recovery wrapper page.
-   - `Toast`: Contextual sliding alert notifications.
-   - `Skeleton`: Content pulse-loading layout placeholders.
+*   **🔒 Secure Multi-Role Authentication System**
+    *   Stateful JWT Access token rotation (1-hour expiry) and single-use Refresh tokens (7-day rotation) preventing replay attacks.
+    *   Password cryptography hashing with `BCrypt`.
+    *   Email verification simulation, secure password recovery flows, and clean session logout.
+*   **📊 Interactive Student Dashboard**
+    *   A responsive drag-and-drop dropzone supporting `PDF`, `DOCX`, `TXT`, and image files with active upload progress tracking.
+    *   Asynchronous background grading simulation running under Spring `@Async` threads to evaluate drafts.
+    *   Automated polling that updates dashboard KPIs and historical performance line charts (via Chart.js) when background tasks resolve.
+*   **✍️ AI Writing Coach & Assistant**
+    *   **Grammar Checker**: Identifies spelling and syntax errors, displaying character offsets and detailed pedagogical explanations (acting as an writing coach) with a one-click apply suggestion feature.
+    *   **Context Rewriter**: Rephrases paragraphs to match Academic, Professional, Creative, or Simplified tones side-by-side.
+    *   **Summarizer**: Compiles long papers into Short, Medium, or Bullet-point summary take-aways.
+*   **♿ Accessible Design System**
+    *   Glassmorphism card layouts, light/dark modes, and modular styling.
+    *   Keyboard navigation support (Esc modal closes, Tab cycles) and strict ARIA descriptors.
 
 ---
 
-## Workspace Layout
+## 🛠️ Tech Stack Matrix
 
-```
-AI Academic Assistant/
-├── backend/
-│   ├── pom.xml
-│   ├── mvnw.cmd (Maven Wrapper)
-│   ├── src/
-│   │   ├── main/java/com/academicassistant/
-│   │   │   ├── config/ (Request filters, OpenAPI rules)
-│   │   │   ├── controller/ (Rest entry points)
-│   │   │   ├── dto/ (Input validators and Response envelopes)
-│   │   │   ├── entity/ (User, Teacher, RefreshToken, ActivityLog)
-│   │   │   ├── repository/ (JPA mapping interfaces)
-│   │   │   ├── security/ (JWT filters, Config blocks, UserDetails)
-│   │   │   └── service/ (Auth, Audits)
-│   │   └── resources/
-│   │       ├── application.properties (MySQL configs)
-│   │       └── schema.sql (Database layouts)
-│   └── src/test/ (MockMvc Auth Integration tests)
-└── frontend/
-    ├── package.json
-    ├── tailwind.config.js
-    └── src/
-        ├── App.jsx (Router configurations)
-        ├── components/ (Accessible shared library)
-        ├── context/ (Auth and Theme systems)
-        ├── features/ (Auth pages and Dashboards)
-        ├── layouts/ (Navbar, Sidebar, Footer layout elements)
-        └── services/ (Axios configurations and API routing)
+| Layer | Technology | Key Purpose |
+| :--- | :--- | :--- |
+| **Frontend** | React 19, Vite, Tailwind CSS, Lucide icons | SPA interface, accessible inputs, layouts |
+| **Animation** | Framer Motion | Smooth springs, tabs transitions, dropzone overlays |
+| **Visuals** | Chart.js, react-chartjs-2 | Submission grade trends line charts |
+| **Backend** | Java 21, Spring Boot 3.3.4 | Core REST API gateway |
+| **Security** | Spring Security, JWT, BCrypt | Authorization filters, role routes, session locks |
+| **Database** | MySQL, Hibernate, JPA | Relational audits, schemas, repositories |
+| **Diagnostics** | Spring Boot Actuator, Prometheus | Application health metrics and health status |
+| **AI Layer** | Google Gemini 1.5 Flash API | Decoupled LLM integration with JSON Schema validation |
+| **Testing** | JUnit 5, MockMvc, Mockito | Isolated H2 database testing cycles |
+
+---
+
+## 📐 System Architecture
+
+The blueprint below displays the clean, decoupled flow of data from React clients through JWT security interceptors to database repositories and modular AI adapters.
+
+```mermaid
+graph TD
+    Client[React Client SPA] <--> |HTTPS / JSON| SecurityFilter[Spring Security JWT Filter]
+    SecurityFilter <--> |Authenticate Session| UserDetails[UserDetails Manager]
+    SecurityFilter <--> |Request Routing| Controller[REST Controllers Auth/Document/AI]
+    
+    Controller <--> Service[Service layer Auth/Document/AI Analysis]
+    Service <--> Repository[JPA Database Repositories]
+    Repository <--> DB[(MySQL / H2 Database)]
+    
+    Service --> |@Async Tasks| Grading[Background Analysis Job]
+    Grading <--> |Update Status| Repository
+    
+    Service <--> |AiProvider Abstraction| AIProvider[AI Interface Gateway]
+    AIProvider <--> |Profile: !test| Gemini[Gemini API Client]
+    AIProvider <--> |Profile: test| MockAI[Mock AI Provider Local]
+    
+    Gemini <--> |API Key Env| Google[Google Generative Language API]
 ```
 
 ---
 
-## Setup & Running Guide
+## 📋 Standardized API Endpoints
 
-### 1. Prerequisite Environments
-- **Java**: JDK 21 installed. Set `JAVA_HOME` pointing to it.
-- **Node.js**: v20+ and npm installed.
-- **MySQL**: MySQL instance running locally.
+### 🔐 Authentication System (`/api/v1/auth`)
 
-### 2. Backend Setup
-1. Create a MySQL schema named `academic_assistant` or let the properties auto-create it:
-   ```sql
-   CREATE DATABASE academic_assistant;
-   ```
-2. Navigate to the `backend` directory:
-   ```bash
-   cd backend
-   ```
-3. Update connection parameters (Username and Password) in `src/main/resources/application.properties` if they differ from standard:
-   ```properties
-   spring.datasource.username=root
-   spring.datasource.password=root
-   ```
-4. Run compilation and integration tests using the Maven wrapper:
-   ```bash
-   .\mvnw.cmd clean test
-   ```
-   *(On H2 databases, tests run fully out-of-the-box.)*
-5. Boot up the server:
-   ```bash
-   .\mvnw.cmd spring-boot:run
-   ```
-   The backend will listen on port `8080`.
+*   `POST /api/v1/auth/signup` - Registers a new user (Student, Teacher, Admin).
+*   `POST /api/v1/auth/login` - Authenticates credentials and returns JWT Access & Refresh tokens.
+*   `POST /api/v1/auth/verify-email` - Verifies newly registered accounts via token.
+*   `POST /api/v1/auth/forgot-password` - Simulates sending password recovery emails.
+*   `POST /api/v1/auth/reset-password` - Updates account credentials with valid reset tokens.
+*   `POST /api/v1/auth/refresh` - Consumes and rotates valid Refresh tokens, returning new key sets.
+*   `POST /api/v1/auth/logout` - Securely terminates active sessions and clears tokens.
 
-### 3. Frontend Setup
-1. Navigate to the `frontend` directory:
-   ```bash
-   cd frontend
-   ```
-2. Install npm dependencies:
-   ```bash
-   npm install
-   ```
-3. Launch the Vite development server:
-   ```bash
-   npm run dev
-   ```
-   The application UI will render at `http://localhost:5173`.
+### 📄 Document & Grading System (`/api/v1/documents`)
+
+*   `POST /api/v1/documents/upload` - Uploads assignment document, saving it locally and scheduling background evaluations.
+*   `GET /api/v1/documents` - Fetches a paginated checklist of documents uploaded by the user.
+*   `GET /api/v1/documents/stats` - Compiles KPIs (Total Uploads, Average Grade, Completed vs Pending status counts).
+*   `GET /api/v1/documents/{id}` - Retrieves details and score outcomes of a single file.
+*   `GET /api/v1/documents/{id}/download` - Streams the original file resource back to the client.
+
+### 🤖 Writing Assistant System (`/api/v1/ai`)
+
+*   `POST /api/v1/ai/grammar` - Performs grammar audits, returning corrections and rule justifications.
+*   `POST /api/v1/ai/rewrite` - Rephrases original texts matching target tone settings.
+*   `POST /api/v1/ai/summarize` - Summarizes long texts matching requested lengths.
 
 ---
 
-## Key Diagnostic Endpoints
+## ⚙️ Environment Variables
 
-### Actuator Monitoring
-- Health check status: `http://localhost:8080/actuator/health`
+Copy the `.env.example` configurations to run in production:
 
-### Swagger API Documentation
-- OpenAPI swagger console: `http://localhost:8080/swagger-ui/index.html`
-- JSON Schema details: `http://localhost:8080/v3/api-docs`
+### Backend Environments (`backend/.env`)
+*   `SPRING_PROFILES_ACTIVE`: Active profile (e.g. `test` to run JUnit offline H2 databases, or `prod` for MySQL).
+*   `SPRING_DATASOURCE_URL`: JDBC connector coordinates.
+*   `SPRING_DATASOURCE_USERNAME` / `SPRING_DATASOURCE_PASSWORD`: Database credentials.
+*   `APP_JWT_SECRET`: Secure 256-bit signature secret key.
+*   `APP_GEMINI_API_KEY`: API key for Gemini models.
+
+### Frontend Environments (`frontend/.env`)
+*   `VITE_API_BASE_URL`: Base gateway URL of the Spring Boot REST API (`http://localhost:8080`).
 
 ---
 
-## Project Roadmap
+## 🛠️ Installation & Setup
 
-- [x] **Phase 1: Project Setup + Authentication + Database**
-  - Project scaffolding, response mapping, logging filters, database layouts, JWT rotation, and shared component system.
-- [x] **Phase 2: Dashboard + File Upload**
-  - Drag-and-drop uploads, progress feedback, local filesystem storage, asynchronous mock analysis, and statistics dashboards.
-- [x] **Phase 3: AI Grammar, Rewrite, Summary**
-  - Gemini AI core checker, modular abstract AI providers, coaching feedback, text rewriting styles, summaries, and transaction audit trails.
-- [ ] **Phase 4: Formatting Checker + Assignment Score**
-  - Font face, margin, alignment, page number compliance checks.
-- [ ] **Phase 5: College Template Validator**
-  - Expected vs. found styling rules comparison tables.
-- [ ] **Phase 6: Teacher/Admin Panels**
-  - Analytical grids, user toggles, limits tracker.
-- [ ] **Phase 7: Reports, Notifications, AI Chat**
-  - PDF/DOCX exporters, STOMP Websocket channels, context assistants.
-- [ ] **Phase 8: Testing, Docker, Deployment, Documentation**
-  - Integrated testing suites, Multi-stage Dockerfiles, compose maps, GitHub Actions pipelines.
+### Prerequisites
+*   **Java**: JDK 21 (Set `JAVA_HOME`)
+*   **Node.js**: v20+ & npm
+*   **MySQL**: Active local instance
+
+### 1. Backend Setup
+1.  Initialize database:
+    ```sql
+    CREATE DATABASE academic_assistant;
+    ```
+2.  Navigate to `backend` and copy example environments:
+    ```bash
+    cd backend
+    cp .env.example .env
+    ```
+3.  Run unit & integration mock test suites:
+    ```bash
+    ./mvnw clean test
+    ```
+4.  Launch the Spring Boot server:
+    ```bash
+    ./mvnw spring-boot:run
+    ```
+    The server starts on port `8080`.
+
+### 2. Frontend Setup
+1.  Navigate to `frontend` and install packages:
+    ```bash
+    cd frontend
+    npm install
+    ```
+2.  Copy example environments:
+    ```bash
+    cp .env.example .env
+    ```
+3.  Launch Vite development server:
+    ```bash
+    npm run dev
+    ```
+    The UI loads at `http://localhost:5173`.
+
+---
+
+## 📈 Roadmap
+
+*   [x] **Phase 1: Project Setup + Authentication + Database**
+    *   API response wrapper, request-ID MDC tracing, JWT rotation, database layouts, and shared design system components.
+*   [x] **Phase 2: Dashboard + File Upload**
+    *   Drag-and-drop dropzone uploads, local storage service abstraction, `@Async` background grading simulation, stats KPIs, and historical Grade Line Charts.
+*   [x] **Phase 3: AI Grammar, Rewrite, Summary**
+    *   Decoupled `AiProvider` adapter, Gemini API JSON validation check, activity logs audit trail, input size controls, and Writing Coach UI panels.
+*   [ ] **Phase 4: Formatting Checker + Assignment Score**
+    *   Review font size, face, alignment, and page margins compliance checks.
+*   [ ] **Phase 5: College Template Validator**
+    *   Compare doc styles side-by-side with college formats.
+*   [ ] **Phase 6: Teacher/Admin Panels**
+    *   Submission dashboard reviews and user control grids.
+*   [ ] **Phase 7: Reports, Notifications, AI Chat**
+    *   Exporting evaluation PDF files and WebSocket notifications.
+*   [ ] **Phase 8: Testing, Docker, Deployment, Documentation**
+    *   Docker compose configs and GitHub Actions pipelines.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.

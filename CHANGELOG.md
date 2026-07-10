@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. The format 
 - **AI Transaction Audit Logging**: Logged all requests to `activity_logs` tracing length and actions.
 - **Overload Type Fixes**: Resolved Java compiler bounds issues on `ApiResponse` generic static builders.
 - **REST Endpoints**: Created `/api/v1/ai/grammar`, `/api/v1/ai/rewrite`, and `/api/v1/ai/summarize` with input length validations.
+- **Portfolio Packaging**: Revamped `README.md` with Mermaid architectures and endpoints tables. Created `.env.example` templates.
 
 ---
 
