@@ -135,3 +135,24 @@ AI Academic Assistant/
 ### Swagger API Documentation
 - OpenAPI swagger console: `http://localhost:8080/swagger-ui/index.html`
 - JSON Schema details: `http://localhost:8080/v3/api-docs`
+
+---
+
+## Project Roadmap
+
+- [x] **Phase 1: Project Setup + Authentication + Database**
+  - Project scaffolding, response mapping, logging filters, database layouts, JWT rotation, and shared component system.
+- [ ] **Phase 2: Dashboard + File Upload**
+  - Drag-and-drop uploads, progress feedback, local filesystem storage, OCR text parsing, and statistics dashboards.
+- [ ] **Phase 3: AI Grammar, Rewrite, Summary**
+  - Gemini AI core checker, coaching explanations, Viva questions, revision generators.
+- [ ] **Phase 4: Formatting Checker + Assignment Score**
+  - Font face, margin, alignment, page number compliance checks.
+- [ ] **Phase 5: College Template Validator**
+  - Expected vs. found styling rules comparison tables.
+- [ ] **Phase 6: Teacher/Admin Panels**
+  - Analytical grids, user toggles, limits tracker.
+- [ ] **Phase 7: Reports, Notifications, AI Chat**
+  - PDF/DOCX exporters, STOMP Websocket channels, context assistants.
+- [ ] **Phase 8: Testing, Docker, Deployment, Documentation**
+  - Integrated testing suites, Multi-stage Dockerfiles, compose maps, GitHub Actions pipelines.
