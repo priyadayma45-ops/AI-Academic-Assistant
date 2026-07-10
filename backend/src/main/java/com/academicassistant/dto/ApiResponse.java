@@ -28,6 +28,11 @@ public class ApiResponse<T> {
                 .build();
     }
 
+    public static <T> ApiResponse<T> success(String message, T data) {
+        String requestId = org.slf4j.MDC.get("requestId");
+        return success(message, data, requestId != null ? requestId : java.util.UUID.randomUUID().toString());
+    }
+
     public static <T> ApiResponse<T> success(String message, String requestId) {
         return ApiResponse.<T>builder()
                 .success(true)
@@ -35,6 +40,11 @@ public class ApiResponse<T> {
                 .requestId(requestId)
                 .timestamp(LocalDateTime.now())
                 .build();
+    }
+
+    public static <T> ApiResponse<T> success(String message) {
+        String requestId = org.slf4j.MDC.get("requestId");
+        return success(message, requestId != null ? requestId : java.util.UUID.randomUUID().toString());
     }
 
     public static <T> ApiResponse<T> error(String message, T errors, String requestId) {

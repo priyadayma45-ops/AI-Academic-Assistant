@@ -7,6 +7,7 @@ backend/.project
 backend/.factorypath
 backend/.springBeans
 backend/*.versionsBackup
+backend/uploads/
 
 # Node / React Build
 frontend/node_modules/

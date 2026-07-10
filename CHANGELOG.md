@@ -1,31 +1,32 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+---
 
-## [Unreleased]
+## [0.2.0] - 2026-07-10
+### Added
+- **Asynchronous Document Grading**: Integrated Spring `@Async` task executor to analyze, grade (between 68% and 98%), and audit uploaded assignments.
+- **REST Document Endpoints**: Created `/api/v1/documents` endpoints supporting upload, details, download streaming, and dashboard summaries.
+- **Client Document Service**: Built client API connection layer mapping axios promises.
+- **Interactive Drag-and-Drop Dropzone**: Implemented a responsive React dropzone supporting PDF, DOCX, TXT, and Images with live loading indicators.
+- **Dashboard Widgets**: Added dynamic KPI indicators for total uploads, average grade, pending analysis, and completed audits.
+- **Chart.js Grade Visualizer**: Configured CategoryScale line chart tracking student assignment performance trends.
+- **Submissions Audit Table**: Built a status table displaying evaluation progress, metadata, and download triggers.
+- **Integration Tests**: Added `DocumentControllerTest.java` verifying secure file routing, scope access boundaries, and metrics calculations.
+
+### Fixed
+- **API Overloads**: Added convenient `ApiResponse.success` builder overloads automatically resolving the request tracing UUID from MDC thread context logs.
+
+---
 
 ## [0.1.0] - 2026-07-10
-
 ### Added
-- **Project Structure**: Created `backend` (Spring Boot) and `frontend` (Vite + React) folders.
-- **Backend Setup**:
-  - Configured `pom.xml` with security, validation, mysql, actuator, websockets, and testing scopes.
-  - Implemented generic `ApiResponse<T>` envelope for standard outputs.
-  - Implemented `RequestIdFilter` injecting UUID tracing headers and `MDC` logs.
-  - Implemented `GlobalExceptionHandler` mapping field-level validation errors.
-  - Configured Spring Security stateless filters and CORS rules.
-  - Implemented JWT token utility classes, custom user details mappings, and **JWT Refresh Token rotation**.
-  - Programmed database audit logger `ActivityLogService`.
-  - Added `schema.sql` database layout design.
-- **Frontend Setup**:
-  - Initialized React/Vite scaffolding with Tailwind CSS integration.
-  - Added React Router, React Hook Form, Framer Motion, Chart.js, React Query, and Lucide icon sets.
-  - Coded custom Axios client featuring automatic token refreshes, interceptors, and client-side UUID request tracing headers.
-  - Configured `ThemeContext` (dark, light, system sync) and `AuthContext` (JWT session management).
-  - Developed beautiful, fully validated pages: `Login`, `Signup`, `ForgotPassword`, `ResetPassword`, `VerifyEmail`.
-- **Testing**:
-  - Programmed MockMvc Integration tests for all Auth Controllers.
-  - Verified compilation build success for both frontend and backend.
+- **Standardized API Payload**: Implemented a generic `ApiResponse<T>` envelope wrapping all REST inputs, validation warnings, and exceptions.
+- **Request Trace Identifier**: Configured `RequestIdFilter` generating UUID tracking headers in MDC context logs.
+- **Security & JWT Rotation**: Configured BCrypt cryptography, stateless sessions, and single-use rotating Refresh tokens.
+- **Authentication Controllers**: Created signup, login, verify email mock, forgot, reset password, refresh, and logout routes.
+- **Shared Design System**: Created accessible component libraries (`Button`, `Card`, `Input`, `Modal`, `Table`, `Loader`, `ErrorBoundary`, `Toast`, `Skeleton`).
+- **Layout Panels**: Designed grid dashboards frameworks (`Sidebar`, `Navbar`, `Footer`, `DashboardLayout`).
+- **OpenAPI / Swagger Integration**: Configured Springdoc OpenAPI endpoints.
+- **Actuator Health Checks**: Integrated health actuators.
