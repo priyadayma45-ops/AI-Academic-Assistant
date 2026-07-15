@@ -50,18 +50,18 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
 The blueprint below displays the clean, decoupled flow of data from React clients through JWT security interceptors to database repositories and modular AI adapters.
 
 ```mermaid
-graph TD
-    ReactFrontend[React Frontend] -->|HTTPS Requests| SpringSecurity[Spring Security JWT]
+flowchart TD
+    ReactFrontend["React Frontend"] -->|"HTTPS Requests"| SpringSecurity["Spring Security JWT"]
     
-    subgraph SpringBootBackend [Spring Boot Backend]
-        SpringSecurity -->|Authorized Request| Controllers[REST Controllers]
-        Controllers -->|Invoke Business Logic| ServiceLayer[Service Layer]
-        ServiceLayer -->|Call AI Abstraction| AiInterface[AI Provider Interface]
-        AiInterface -->|Gemini Implementation| GeminiProvider[Gemini Provider]
-        AiInterface -->|Mock Implementation| MockProvider[Mock Provider]
+    subgraph SpringBootBackend["Spring Boot Backend"]
+        SpringSecurity -->|"Authorized Request"| Controllers["REST Controllers"]
+        Controllers -->|"Invoke Business Logic"| ServiceLayer["Service Layer"]
+        ServiceLayer -->|"Call AI Abstraction"| AiInterface["AI Provider Interface"]
+        AiInterface -->|"Gemini Implementation"| GeminiProvider["Gemini Provider"]
+        AiInterface -->|"Mock Implementation"| MockProvider["Mock Provider"]
     end
     
-    ServiceLayer -->|Query Database| Database[(MySQL Database)]
+    ServiceLayer -->|"Query Database"| Database[("MySQL Database")]
 ```
 
 ---
