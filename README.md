@@ -51,22 +51,17 @@ The blueprint below displays the clean, decoupled flow of data from React client
 
 ```mermaid
 graph TD
-    Client[React Client SPA] <--> |HTTPS / JSON| SecurityFilter[Spring Security JWT Filter]
-    SecurityFilter <--> |Authenticate Session| UserDetails[UserDetails Manager]
-    SecurityFilter <--> |Request Routing| Controller[REST Controllers Auth/Document/AI]
+    ReactFrontend[React Frontend] -->|HTTPS Requests| SpringSecurity[Spring Security JWT]
     
-    Controller <--> Service[Service layer Auth/Document/AI Analysis]
-    Service <--> Repository[JPA Database Repositories]
-    Repository <--> DB[(MySQL / H2 Database)]
+    subgraph SpringBootBackend [Spring Boot Backend]
+        SpringSecurity -->|Authorized Request| Controllers[REST Controllers]
+        Controllers -->|Invoke Business Logic| ServiceLayer[Service Layer]
+        ServiceLayer -->|Call AI Abstraction| AiInterface[AI Provider Interface]
+        AiInterface -->|Gemini Implementation| GeminiProvider[Gemini Provider]
+        AiInterface -->|Mock Implementation| MockProvider[Mock Provider]
+    end
     
-    Service --> |@Async Tasks| Grading[Background Analysis Job]
-    Grading <--> |Update Status| Repository
-    
-    Service <--> |AiProvider Abstraction| AIProvider[AI Interface Gateway]
-    AIProvider <--> |Profile: !test| Gemini[Gemini API Client]
-    AIProvider <--> |Profile: test| MockAI[Mock AI Provider Local]
-    
-    Gemini <--> |API Key Env| Google[Google Generative Language API]
+    ServiceLayer -->|Query Database| Database[(MySQL Database)]
 ```
 
 ---
