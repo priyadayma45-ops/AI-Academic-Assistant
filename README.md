@@ -110,7 +110,7 @@ Copy the `.env.example` configurations to run in production:
 
 ---
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 *   **Java**: JDK 21 (Set `JAVA_HOME`)
@@ -155,7 +155,7 @@ Copy the `.env.example` configurations to run in production:
 
 ---
 
-## 📈 Roadmap
+##  Roadmap
 
 *   [x] **Phase 1: Project Setup + Authentication + Database**
     *   API response wrapper, request-ID MDC tracing, JWT rotation, database layouts, and shared design system components.
@@ -176,6 +176,6 @@ Copy the `.env.example` configurations to run in production:
 
 ---
 
-## 📄 License
+##  License
 
 Distributed under the MIT License. See `LICENSE` for more information.
