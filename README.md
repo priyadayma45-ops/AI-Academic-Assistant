@@ -1,4 +1,4 @@
-# 🎓 AI Academic Assistant
+#  AI Academic Assistant
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg?style=for-the-badge&logo=openjdk)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-brightgreen.svg?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
@@ -9,21 +9,21 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-*   **🔒 Secure Multi-Role Authentication System**
+*   ** Secure Multi-Role Authentication System**
     *   Stateful JWT Access token rotation (1-hour expiry) and single-use Refresh tokens (7-day rotation) preventing replay attacks.
     *   Password cryptography hashing with `BCrypt`.
     *   Email verification simulation, secure password recovery flows, and clean session logout.
-*   **📊 Interactive Student Dashboard**
+*   ** Interactive Student Dashboard**
     *   A responsive drag-and-drop dropzone supporting `PDF`, `DOCX`, `TXT`, and image files with active upload progress tracking.
     *   Asynchronous background grading simulation running under Spring `@Async` threads to evaluate drafts.
     *   Automated polling that updates dashboard KPIs and historical performance line charts (via Chart.js) when background tasks resolve.
-*   **✍️ AI Writing Coach & Assistant**
+*   ** AI Writing Coach & Assistant**
     *   **Grammar Checker**: Identifies spelling and syntax errors, displaying character offsets and detailed pedagogical explanations (acting as an writing coach) with a one-click apply suggestion feature.
     *   **Context Rewriter**: Rephrases paragraphs to match Academic, Professional, Creative, or Simplified tones side-by-side.
     *   **Summarizer**: Compiles long papers into Short, Medium, or Bullet-point summary take-aways.
-*   **♿ Accessible Design System**
+*   ** Accessible Design System**
     *   Glassmorphism card layouts, light/dark modes, and modular styling.
     *   Keyboard navigation support (Esc modal closes, Tab cycles) and strict ARIA descriptors.
 
@@ -66,9 +66,9 @@ flowchart TD
 
 ---
 
-## 📋 Standardized API Endpoints
+##  Standardized API Endpoints
 
-### 🔐 Authentication System (`/api/v1/auth`)
+###  Authentication System (`/api/v1/auth`)
 
 *   `POST /api/v1/auth/signup` - Registers a new user (Student, Teacher, Admin).
 *   `POST /api/v1/auth/login` - Authenticates credentials and returns JWT Access & Refresh tokens.
@@ -78,7 +78,7 @@ flowchart TD
 *   `POST /api/v1/auth/refresh` - Consumes and rotates valid Refresh tokens, returning new key sets.
 *   `POST /api/v1/auth/logout` - Securely terminates active sessions and clears tokens.
 
-### 📄 Document & Grading System (`/api/v1/documents`)
+###  Document & Grading System (`/api/v1/documents`)
 
 *   `POST /api/v1/documents/upload` - Uploads assignment document, saving it locally and scheduling background evaluations.
 *   `GET /api/v1/documents` - Fetches a paginated checklist of documents uploaded by the user.
@@ -86,7 +86,7 @@ flowchart TD
 *   `GET /api/v1/documents/{id}` - Retrieves details and score outcomes of a single file.
 *   `GET /api/v1/documents/{id}/download` - Streams the original file resource back to the client.
 
-### 🤖 Writing Assistant System (`/api/v1/ai`)
+###  Writing Assistant System (`/api/v1/ai`)
 
 *   `POST /api/v1/ai/grammar` - Performs grammar audits, returning corrections and rule justifications.
 *   `POST /api/v1/ai/rewrite` - Rephrases original texts matching target tone settings.
@@ -94,7 +94,7 @@ flowchart TD
 
 ---
 
-## ⚙️ Environment Variables
+##  Environment Variables
 
 Copy the `.env.example` configurations to run in production:
 
