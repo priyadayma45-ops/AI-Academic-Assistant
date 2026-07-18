@@ -45,7 +45,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
 
 ---
 
-## 📐 System Architecture
+##  System Architecture
 
 The blueprint below displays the clean, decoupled flow of data from React clients through JWT security interceptors to database repositories and modular AI adapters.
 
