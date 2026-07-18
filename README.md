@@ -29,7 +29,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
 
 ---
 
-## 🛠️ Tech Stack Matrix
+##  Tech Stack Matrix
 
 | Layer | Technology | Key Purpose |
 | :--- | :--- | :--- |
