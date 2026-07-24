@@ -15,7 +15,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
     *   Stateful JWT Access token rotation (1-hour expiry) and single-use Refresh tokens (7-day rotation) preventing replay attacks.
     *   Password cryptography hashing with `BCrypt`.
     *   Email verification simulation, secure password recovery flows, and clean session logout.
-*    Interactive Student Dashboard**
+*    Interactive Student Dashboard
     *   A responsive drag-and-drop dropzone supporting `PDF`, `DOCX`, `TXT`, and image files with active upload progress tracking.
     *   Asynchronous background grading simulation running under Spring `@Async` threads to evaluate drafts.
     *   Automated polling that updates dashboard KPIs and historical performance line charts (via Chart.js) when background tasks resolve.
