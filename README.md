@@ -23,7 +23,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
     *   **Grammar Checker**: Identifies spelling and syntax errors, displaying character offsets and detailed pedagogical explanations (acting as an writing coach) with a one-click apply suggestion feature.
     *   **Context Rewriter**: Rephrases paragraphs to match Academic, Professional, Creative, or Simplified tones side-by-side.
     *   **Summarizer**: Compiles long papers into Short, Medium, or Bullet-point summary take-aways.
-*   ** Accessible Design System**
+*   Accessible Design System**
     *   Glassmorphism card layouts, light/dark modes, and modular styling.
     *   Keyboard navigation support (Esc modal closes, Tab cycles) and strict ARIA descriptors.
 
