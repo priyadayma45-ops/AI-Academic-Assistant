@@ -19,7 +19,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
     *   A responsive drag-and-drop dropzone supporting `PDF`, `DOCX`, `TXT`, and image files with          active upload progress tracking.
     *   Asynchronous background grading simulation running under Spring `@Async` threads to evaluate drafts.
     *   Automated polling that updates dashboard KPIs and historical performance line charts (via Chart.js) when background tasks resolve.
-*   ** AI Writing Coach & Assistant**
+*   AI Writing Coach & Assistant**
     *   **Grammar Checker**: Identifies spelling and syntax errors, displaying character offsets and detailed pedagogical explanations (acting as an writing coach) with a one-click apply suggestion feature.
     *   **Context Rewriter**: Rephrases paragraphs to match Academic, Professional, Creative, or Simplified tones side-by-side.
     *   **Summarizer**: Compiles long papers into Short, Medium, or Bullet-point summary take-aways.
