@@ -11,7 +11,7 @@ An enterprise-grade, full-stack AI-powered coaching companion designed for stude
 
 ##  Key Features
 
-*   ** Secure Multi-Role Authentication System**
+*   Secure Multi-Role Authentication System
     *   Stateful JWT Access token rotation (1-hour expiry) and single-use Refresh tokens (7-day rotation) preventing replay attacks.
     *   Password cryptography hashing with `BCrypt`.
     *   Email verification simulation, secure password recovery flows, and clean session logout.
