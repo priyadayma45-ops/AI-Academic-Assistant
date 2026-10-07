@@ -5,7 +5,7 @@
 [![React](https://img.shields.io/badge/React-19-blue.svg?style=for-the-badge&logo=react)](https://react.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-An enterprise-grade, full-stack AI-powered coaching companion designed for students, teachers, and academic administrators. Built with a clean, decoupled architecture, SOLID design principles, secure JWT session rotation, and a modular AI interface layer
+An enterprise-grade, full-stack AI-powered coaching companion designed for students, teachers, and academic administrators. Built with a clean, decoupled architecture, SOLID design principles, secure JWT session rotation, and a modular AI interface layer.
 
 ---
 
